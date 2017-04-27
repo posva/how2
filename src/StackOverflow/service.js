@@ -20,3 +20,9 @@ export function getQuestions (question) {
     .then(({ data }) => data)
     .catch(errHandler)
 }
+
+export function getQuestionAnswers (question) {
+  return gso(`/answers/${question}`)
+    .then(({ data }) => data.items)
+    .catch(errHandler)
+}

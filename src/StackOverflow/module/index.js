@@ -7,7 +7,8 @@ export default {
   state: {
     question: '',
     bestAnswer: null,
-    questions: []
+    questions: [],
+    selectedQuestion: null
   },
   actions,
   mutations,

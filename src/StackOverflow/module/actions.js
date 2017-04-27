@@ -13,3 +13,17 @@ export function fetchQuestions ({ commit, state }) {
     return questions
   })
 }
+
+export function prepareSelectedQuestion ({ commit, state }, { question }) {
+  return api.getQuestionAnswers(question)
+    .then(answers => {
+      commit('SET_SELECTED_QUESTION', {
+        question
+      })
+      commit('SET_QUESTION_ANSWERS', {
+        question,
+        answers
+      })
+      return answers
+    })
+}
