@@ -9,7 +9,8 @@
         <p class="control">
           <input class="input is-medium"
                  type="text"
-                 v-model="question"
+                 :value="question"
+                 @input="setQuestion({ question: $event.target.value })"
                  placeholder="do permutations in python">
         </p>
       </div>
@@ -26,18 +27,28 @@
 
 <script>
 import { getBestAnswer } from './service'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   data () {
     return {
-      question: ''
+      searching: false
     }
+  },
+
+  computed: {
+    ...mapGetters('stackoverflow', {
+      question: 'QUESTION'
+    })
   },
 
   methods: {
     search () {
       getBestAnswer(this.question).then(console.log)
-    }
+    },
+    ...mapMutations('stackoverflow', {
+      setQuestion: 'SET_QUESTION'
+    })
   }
 }
 </script>
