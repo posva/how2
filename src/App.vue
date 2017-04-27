@@ -19,12 +19,13 @@
         <h1 class="title">
           How to...
         </h1>
-        <form>
+        <form @submit.prevent="search">
           <div class="field">
             <label class="label"></label>
             <p class="control">
               <input class="input is-medium"
                      type="text"
+                     v-model="question"
                      placeholder="do permutations in python">
             </p>
           </div>
@@ -52,8 +53,21 @@
 </template>
 
 <script>
+import { getBestAnswer } from './StackOverflow/service'
+
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      question: ''
+    }
+  },
+
+  methods: {
+    search () {
+      getBestAnswer(this.question).then(console.log)
+    }
+  }
 }
 </script>
 
