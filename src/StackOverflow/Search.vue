@@ -56,7 +56,7 @@ export default {
       // TODO check if the data is non null and display error
       this.fetchBestAnswer(this.question).then(() => {
         this.searching = false
-        // navigation
+        this.$router.push('/best-answer')
       }).catch(err => {
         console.error(err)
         this.searching = false
