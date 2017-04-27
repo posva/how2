@@ -40,4 +40,8 @@ export default {
 #app {
   min-height: 100vh;
 }
+
+pre {
+  overflow: auto;
+}
 </style>
