@@ -4,30 +4,33 @@
       How to...
     </h1>
     <form @submit.prevent="search">
-      <div class="field">
-        <label class="label"></label>
-        <p class="control">
-          <input class="input is-medium"
-                 type="text"
-                 :value="question"
-                 @input="setQuestion({ question: $event.target.value })"
-                 placeholder="do permutations in python">
-        </p>
-      </div>
-      <div class="field has-addons has-addons-centered">
-        <p class="control">
-          <button class="button is-primary is-large">
-            Search
-          </button>
-        </p>
-      </div>
+      <fieldset :disabled="searching">
+        <div class="field">
+          <label class="label"></label>
+          <p class="control">
+            <input class="input is-medium"
+                   type="text"
+                   :value="question"
+                   @input="setQuestion({ question: $event.target.value })"
+                   placeholder="do permutations in python">
+          </p>
+        </div>
+        <div class="field has-addons has-addons-centered">
+          <p class="control">
+            <button class="button is-primary is-large"
+                    :class="searchingClasses"
+            >
+              Search
+            </button>
+          </p>
+        </div>
+      </fieldset>
     </form>
   </div>
 </template>
 
 <script>
-import { getBestAnswer } from './service'
-import { mapGetters, mapMutations } from 'vuex'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 
 export default {
   data () {
@@ -37,6 +40,11 @@ export default {
   },
 
   computed: {
+    searchingClasses () {
+      return {
+        'is-loading': this.searching
+      }
+    },
     ...mapGetters('stackoverflow', {
       question: 'QUESTION'
     })
@@ -44,11 +52,30 @@ export default {
 
   methods: {
     search () {
-      getBestAnswer(this.question).then(console.log)
+      this.searching = true
+      // TODO check if the data is non null and display error
+      this.fetchBestAnswer(this.question).then(() => {
+        this.searching = false
+        // navigation
+      }).catch(err => {
+        console.error(err)
+        this.searching = false
+      })
     },
     ...mapMutations('stackoverflow', {
       setQuestion: 'SET_QUESTION'
-    })
+    }),
+    ...mapActions('stackoverflow', [ 'fetchBestAnswer' ])
   }
 }
 </script>
+
+<style>
+/* remove default fieldset border */
+fieldset {
+  border: 0;
+  padding: 0.01em 0 0 0;
+  margin: 0;
+  min-width: 0;
+}
+</style>
