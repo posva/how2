@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Search from './StackOverflow/Search'
 import BestAnswer from './StackOverflow/BestAnswer'
+import Question from './StackOverflow/Question'
 
 Vue.use(Router)
 
@@ -15,6 +16,11 @@ export default new Router({
     {
       path: '/best-answer',
       component: BestAnswer
+    },
+    {
+      path: '/question/:question',
+      name: 'question',
+      component: Question
     }
   ]
 })

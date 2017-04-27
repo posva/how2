@@ -61,11 +61,13 @@ export default {
         console.error(err)
         this.searching = false
       })
+      // Fetch other questions but don't wait for them
+      this.fetchQuestions(this.question)
     },
     ...mapMutations('stackoverflow', {
       setQuestion: 'SET_QUESTION'
     }),
-    ...mapActions('stackoverflow', [ 'fetchBestAnswer' ])
+    ...mapActions('stackoverflow', [ 'fetchBestAnswer', 'fetchQuestions' ])
   }
 }
 </script>

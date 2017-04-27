@@ -6,7 +6,8 @@ export default {
   namespaced: true,
   state: {
     question: '',
-    bestAnswer: null
+    bestAnswer: null,
+    questions: []
   },
   actions,
   mutations,

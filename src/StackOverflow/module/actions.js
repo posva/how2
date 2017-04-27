@@ -6,3 +6,10 @@ export function fetchBestAnswer ({ commit, state }) {
     return bestAnswer
   })
 }
+
+export function fetchQuestions ({ commit, state }) {
+  return api.getQuestions(state.question).then(questions => {
+    commit('SET_QUESTIONS', { questions })
+    return questions
+  })
+}
