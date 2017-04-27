@@ -15,29 +15,7 @@
 
     <!-- Hero content: will be in the middle -->
     <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          How to...
-        </h1>
-        <form @submit.prevent="search">
-          <div class="field">
-            <label class="label"></label>
-            <p class="control">
-              <input class="input is-medium"
-                     type="text"
-                     v-model="question"
-                     placeholder="do permutations in python">
-            </p>
-          </div>
-          <div class="field has-addons has-addons-centered">
-            <p class="control">
-              <button class="button is-primary is-large">
-                Search
-              </button>
-            </p>
-          </div>
-        </form>
-      </div>
+      <router-view></router-view>
     </div>
 
     <!-- Hero footer: will stick at the bottom -->
@@ -53,21 +31,8 @@
 </template>
 
 <script>
-import { getBestAnswer } from './StackOverflow/service'
-
 export default {
-  name: 'app',
-  data () {
-    return {
-      question: ''
-    }
-  },
-
-  methods: {
-    search () {
-      getBestAnswer(this.question).then(console.log)
-    }
-  }
+  name: 'app'
 }
 </script>
 
