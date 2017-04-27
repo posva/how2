@@ -3,9 +3,8 @@
     <h1 v-show="question" class="title is-4">
       {{ question }}
     </h1>
-    <pre>{{ bestAnswer.body_markdown }}</pre>
-    <!-- <Markdown v-if="bestAnswer" -->
-    <!-- :content="bestAnswer.body_markdown"/> -->
+    <Markdown v-if="bestAnswer"
+              :content="bestAnswer.body_markdown"/>
   </div>
 </template>
 
