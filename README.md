@@ -235,6 +235,14 @@ So technically, this is a really small application, but we're going to take it s
 
 And it's true, it's hard to add different features at the same time if we have no tests. But trying to learn tests and how to scale our app at the same time is pretty big deal. So let's focus on one thing at a time and get it right ⚡️.
 
+## Existing How2 API
+
+talk about https://posva-how2.now.sh
+
+- `/best-answer/:questionText`: best answer for a question
+- `/questions/:questionText`: list of SO questions for a question
+- `/question/:questionId`: Answers of an SO question
+
 ## Developing our own How2
 
 Let's implement those features in our How 2 with Vue!
@@ -614,13 +622,21 @@ Into adding the main feature of our App: The best answer. We are already fetchin
 </template>
 ```
 
-But, wait a minute... How are we going to get the `bestAnswer`? We could fetch it again but that wouldn't be optimal, specially when dealing with a rate limit like we are. We need to share the best answer fetched in the `Search` component with our new `BestAnswer` component. This is what we call a piece of App state. It's like a global piece of the `data` property in a component. We could store everything in the Root component since we have access to it with `$root` but that would get really messy with time. We need something to handle the App state, something like [Vuex](https://vuex.vuejs.org/). As with the router, we first need to install it:
+But, wait a minute... How are we going to get the `bestAnswer`? We could fetch it again but that wouldn't be optimal, specially when dealing with a rate limit API like we are. We need to share the best answer fetched in the `Search` view with our new `BestAnswer` view. This is what we call a piece of App state. It's like a global piece of the `data` property in a component. We could store everything in the Root component since we have access to it with `$root` but that would get really messy with time as it's not a scalable approach. We need something to handle the App state, something like [Vuex](https://vuex.vuejs.org/). As with the router, we first need to install it:
 
 ```sh
 npm install --save vuex
 ```
 
 **Vuex is more complicated than the router, so don't worry if you don't understand everything right away, it will need practice.**
+
+TODO explain Vuex
+- principles
+- state = read only
+- mutations
+- getters
+- actions
+- modules
 
 Similarly to the router, we are going to create a `store.js` file and initiate there the Store for our App data:
 
@@ -638,9 +654,46 @@ export default store
 
 Then, we add it to our Root instance in `main.js`:
 
-### App level state
+important to initialise state
+TODO how to store the question on the state
+explain namespaced vs types
+why so complicated? to test
+why we separate in so many files
 
-### Connecting to an external API
+### Storing the best answer on the state
+
+- actions return promises
+- using helpers
+- loading state in search view
+- fieldset trick
+
+### Display the best answer
+
+- handle markdown
+  - create a comp using marked3
+  - local plugin
+  - render function, short note about virtual dom and react
+- missing error handling
+
+### HMR for Vuex
+
+- no full reload when modifying mut, actions, gets
+
+### List other relevant questions
+
+- add action
+- fetch list, where, why
+- Add view
+- List of links
+- extract question id
+- refactor errHandler in actions
+
+### Display answers for another question
+
+- mutations that reuse getters
+- prepareSelected action -> multiple commits
+- Selected question getter
+- Use markdown to display answers
 
 ## Summary
 
