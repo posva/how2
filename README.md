@@ -1,4 +1,4 @@
-# build-again
+# How2
 
 > A Vue.js project
 
