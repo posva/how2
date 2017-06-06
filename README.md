@@ -249,7 +249,7 @@ talk about https://posva-how2.now.sh
 
 - `/best-answer/:questionText`: best answer for a question
 - `/questions/:questionText`: list of SO questions for a question
-- `/question/:questionId`: Answers of an SO question
+- `/answers/:questionId`: Answers of an SO question
 
 ## Developing our own How2
 
