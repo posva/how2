@@ -123,6 +123,14 @@ Final HTML result:
 
 ### Events
 
+### Components
+
+#### State
+
+#### Props
+
+#### Events
+
 ## Scaffolding a project with vue-cli
 
 Nowadays, the front has evolved quite a bit, hasn't it? We don't have a single js file anymore. Since we ship more and more logic into the front-end, and web applications are so dynamic. We really need to split it up into multiple files.
@@ -231,9 +239,9 @@ We are going to implement a subset of features to make our application ready to 
 So technically, this is a really small application, but we're going to take it seriously and implement it as if it will continue to get more and more features. In other words, **we are making a scalable app**. I know what you're thinking...
 
 
-> An app with no test is a scalable as a 48h hackathon Single Page Application in jQuery
+> An app with no test is as scalable as a 48h hackathon Single Page Application in jQuery
 
-And it's true, it's hard to add different features at the same time if we have no tests. But trying to learn tests and how to scale our app at the same time is pretty big deal. So let's focus on one thing at a time and get it right ⚡️.
+And it's true, it's hard to add different features at the same time if we have no tests. But trying to learn tests and how to scale our app at the same time is a pretty big deal. So let's focus on one thing at a time and get it right ⚡️.
 
 ## Existing How2 API
 
