@@ -1,4 +1,4 @@
-# Vue.js: Progressively building an Single Page Application
+# Vue.js: Progressively building a Single Page Application
 
 ## Learning Goals
 
